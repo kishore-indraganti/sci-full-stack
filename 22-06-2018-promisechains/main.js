@@ -12,7 +12,13 @@ function tick(sec) {
 	return new Promise(fn);
 }
 
-tick(1000)
+Promise.all([tick(1000), tick(2000)]).then(
+	function(data) {
+		console.log(data);
+	}
+)
+
+/* tick(1000)
 	.then(
 		function (data) {
 			return tick(data)
@@ -47,3 +53,8 @@ tick(1000)
 			console.log('Inisde catch', err);
 		}
 	);
+
+
+	var promise1 = new Promise(function(resolve, reject) {
+		setTimeout(resolve, 100, 'foo');
+	}); */
